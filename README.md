@@ -75,7 +75,7 @@ echo "GITHUB_TOKEN=your_personal_token_here" > .env
 python app.py
 ```
 
-Then open http://localhost:5000 in your browser and start chatting with the AI.
+Then open `http://localhost:5000` in your browser and start chatting with the AI.
 
 ## 🙋‍♀️ Want to Contribute?
 
