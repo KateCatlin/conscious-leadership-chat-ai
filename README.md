@@ -20,7 +20,7 @@ It’s great for moments of reflection, but also serves as a **starter kit** to 
 
 ## 🔧 Why I Made This
 
-I’ve done code bootcamps in Java and Ruby, but I know zero Python. I wanted to see:
+I’ve done code bootcamps in Java and Ruby, but I have no prior experience with Python. I wanted to see:
 
 - What can I build with AI using **GitHub Models**?
 - How fast can I get it running with **just Copilot**?
