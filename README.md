@@ -50,7 +50,7 @@ I'll be making a video soon walking through how I'm using the Models tab to impr
 
 - **Frontend:** HTML, CSS, Vanilla JS
 - **Backend:** Python Flask
-- **AI Engine:** GitHub Models (no 3rd party API key required!)
+- **AI Engine:** GitHub Models (no third-party API key required!)
 - **Other Tools:** Dotenv, GitHub Copilot for development
 
 ## ⚙️ Setup
