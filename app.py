@@ -43,6 +43,7 @@ def chat():
         return jsonify({"response": "Please enter a message."}), 400
 
     github_token = os.environ.get("GITHUB_TOKEN")
+    print(f"GITHUB_TOKEN: {github_token}")
     if not github_token:
         return jsonify({"response": "Server error: GITHUB_TOKEN not set."}), 500
 
@@ -52,11 +53,18 @@ def chat():
         SystemMessage(content=system_prompt_content),
         UserMessage(content=user_message)
     ]
+
     try:
         client = ChatCompletionsClient(
             endpoint=GITHUB_MODELS_ENDPOINT,
             credential=AzureKeyCredential(github_token)
         )
+        print("ChatCompletionsClient initialized successfully.")
+    except Exception as e:
+        print(f"Error initializing ChatCompletionsClient: {e}")
+        return jsonify({"response": "Server error: Unable to initialize AI client."}), 500
+
+    try:
         response = client.complete(
             model=GITHUB_MODELS_MODEL,
             messages=messages_for_api,
@@ -66,8 +74,8 @@ def chat():
         ai_response = response.choices[0].message.content.strip()
         return jsonify({"response": ai_response})
     except Exception as e:
+        print(f"Error during API call: {e}")
         return jsonify({"response": "Sorry, there was an error processing your request."}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
-
