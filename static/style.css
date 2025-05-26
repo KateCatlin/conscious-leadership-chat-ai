@@ -1,8 +1,203 @@
-body { font-family: Arial, sans-serif; background: #f7f7f7; }
-.container { max-width: 600px; margin: 40px auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
-h1 { text-align: center; }
-#chat-form { display: flex; flex-direction: column; gap: 1em; }
-#user-input { width: 100%; resize: vertical; padding: 0.5em; font-size: 1em; }
-#send-btn { align-self: flex-end; padding: 0.5em 1.5em; font-size: 1em; background: #2d7ff9; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
-#send-btn:disabled { background: #b3cdfa; cursor: not-allowed; }
-#response-area { margin-top: 2em; padding: 1em; background: #f0f4fa; border-radius: 4px; min-height: 2em; }
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 20px;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+/* Main Content Container */
+.container {
+    flex: 1;
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Subtitle */
+.subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+
+/* Introductory Text */
+.intro-text {
+    text-align: center;
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Form */
+#chat-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Textarea */
+#user-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+#user-input:focus {
+    outline: none;
+    border-color: #4DB6AC;
+    box-shadow: 0 0 0 3px rgba(77, 182, 172, 0.25);
+}
+
+/* Placeholder Text */
+#user-input::placeholder {
+    font-style: italic;
+    color: #999;
+}
+
+/* Send Button */
+#send-btn {
+    background-color: #4DB6AC;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+}
+
+#send-btn:hover {
+    background-color: #3A9D91;
+}
+
+/* Button Active Animation */
+#send-btn:active {
+    transform: scale(0.97);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* AI Response Area */
+#response-area {
+    margin-top: 20px; /* Subtle spacing between input and response */
+    padding: 0; /* Remove padding */
+    background-color: transparent; /* Remove background color */
+    border: none; /* Remove border */
+}
+
+/* Typing indicator with pulsing dots */
+#loading-placeholder {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+    justify-content: center;
+    gap: 6px;
+}
+
+#loading-placeholder.visible {
+    display: flex; /* Show only when .visible is added */
+}
+
+#loading-placeholder span {
+    width: 8px;
+    height: 8px;
+    background-color: #4DB6AC;
+    border-radius: 50%;
+    animation: pulse 1.2s infinite ease-in-out;
+}
+
+#loading-placeholder span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+#loading-placeholder span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Chat bubble styling */
+#response-message {
+    background-color: #e0f2f1;
+    color: #004d40;
+    padding: 15px 20px;
+    border-radius: 15px;
+    position: relative;
+    margin-top: 10px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#response-message::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 0;
+    border-color: #e0f2f1 transparent transparent transparent;
+}
+
+/* Hidden class to hide elements */
+.hidden {
+    display: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+    padding: 25px 10px 10px;
+    width: 100%;
+    background-color: #f4f7f6;
+}

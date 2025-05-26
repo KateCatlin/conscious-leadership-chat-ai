@@ -1,5 +1,4 @@
 import os
-import yaml
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 from azure.ai.inference import ChatCompletionsClient
@@ -10,8 +9,8 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# 15 Conscious Leadership Principles
-CONSCIOUS_LEADERSHIP_PRINCIPLES = [
+# 15 Conscious Leadership Commitments
+CONSCIOUS_LEADERSHIP_COMMITMENTS = [
     "1. Taking radical responsibility.",
     "2. Learning through curiosity.",
     "3. Feeling all feelings.",
@@ -32,13 +31,6 @@ CONSCIOUS_LEADERSHIP_PRINCIPLES = [
 GITHUB_MODELS_ENDPOINT = "https://models.github.ai/inference"
 GITHUB_MODELS_MODEL = "openai/gpt-4.1"
 
-def load_prompts(file_path):
-    with open(file_path, "r") as file:
-        return yaml.safe_load(file)
-
-# Load prompts from .prompts.yml
-PROMPTS = load_prompts("prompts.yml")
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -54,12 +46,11 @@ def chat():
     if not github_token:
         return jsonify({"response": "Server error: GITHUB_TOKEN not set."}), 500
 
-    system_prompt_content = PROMPTS["messages"][0]["content"]
-    user_prompt_template = PROMPTS["messages"][1]["content"]
-    user_prompt_content = user_prompt_template.replace("{{input}}", user_message)
+    commitments_string = "\n".join(CONSCIOUS_LEADERSHIP_COMMITMENTS)
+    system_prompt_content = f"""You are an insightful and supportive AI assistant. Your goal is to help users reflect on their day using the 15 Conscious Leadership Commitments.\nHere are the 15 Conscious Leadership Commitments:\n{commitments_string}\n\nWhen the user shares something about their day:\n1.  Analyze their message carefully.\n2.  From the list above, choose the SINGLE most relevant Conscious Leadership Commitment that could offer them a helpful perspective or insight related to what they've shared.\n3.  Craft a concise (2-4 sentences), supportive, and empathetic response to the user.\n4.  In your response, naturally weave in the name or essence of the commitment you selected, and briefly explain how it might apply to their situation. Do not explicitly state 'I have chosen commitment X'. Simply use it.\n"""
     messages_for_api = [
         SystemMessage(content=system_prompt_content),
-        UserMessage(content=user_prompt_content)
+        UserMessage(content=user_message)
     ]
     try:
         client = ChatCompletionsClient(
@@ -79,3 +70,4 @@ def chat():
 
 if __name__ == "__main__":
     app.run(debug=True)
+

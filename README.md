@@ -1,30 +1,30 @@
 # conscious-leadership-chat-ai
 
-> An AI-powered chat application that responds to users' daily updates with reminders and reflections rooted in the 15 Conscious Leadership Principles. This project showcases the integration of AI for personal development and the power of modern coding assistants like GitHub Copilot's agent features.
+> An AI-powered chat application that responds to users' daily updates with reminders and reflections rooted in the 15 Conscious Leadership Commitments. This project showcases the integration of AI for personal development and the power of modern coding assistants like GitHub Copilot's agent features.
 
 ## About The Project
 
-This application provides a space for users to articulate their daily experiences, thoughts, and challenges. In response, an AI assistant offers supportive reflections and introduces one of the [15 Conscious Leadership Principles](https://conscious.is/15-commitments) to encourage mindfulness, self-awareness, and intentional leadership in everyday life.
+This application provides a space for users to articulate their daily experiences, thoughts, and challenges. In response, an AI assistant offers supportive reflections and introduces one of the [15 Conscious Leadership Commitments](https://conscious.is/15-commitments) to encourage mindfulness, self-awareness, and intentional leadership in everyday life.
 
-The goal is to create a simple yet profound tool that helps individuals connect their daily activities with powerful principles for conscious living and working.
+The goal is to create a simple yet profound tool that helps individuals connect their daily activities with powerful commitments for conscious living and working.
 
 ## Key Features
 
 *   **Daily Reflection Input:** Users can easily share what's on their mind.
 *   **AI-Powered Responses:** Get empathetic and relevant feedback.
-*   **Conscious Leadership Principle Integration:** Each AI response will subtly weave in one of the 15 principles as a point of reflection.
+*   **Conscious Leadership Commitment Integration:** Each AI response will subtly weave in one of the 15 commitments as a point of reflection.
 *   **Focus on Growth:** Aims to foster self-awareness and personal development.
-*   `[TODO: Add more features as they are developed, e.g., history, principle tracking]`
+*   `[TODO: Add more features as they are developed, e.g., history, commitment tracking]`
 
 ## Core Inspiration: The 15 Commitments of Conscious Leadership
 
-This project is deeply inspired by the work of the Conscious Leadership Group and their "15 Commitments of Conscious Leadership." These principles offer a transformative framework for personal and professional growth.
+This project is deeply inspired by the work of the Conscious Leadership Group and their "15 Commitments of Conscious Leadership." These commitments offer a transformative framework for personal and professional growth.
 
-**Full credit for these principles goes to the Conscious Leadership Group.** We encourage everyone to explore their work further:
+**Full credit for these commitments goes to the Conscious Leadership Group.** We encourage everyone to explore their work further:
 *   **Website:** [conscious.is](https://conscious.is/)
 *   **The 15 Commitments:** [conscious.is/15-commitments](https://conscious.is/15-commitments)
 
-This application is an attempt to bring awareness to these valuable principles in a novel, interactive way and is not an official product of the Conscious Leadership Group.
+This application is an attempt to bring awareness to these valuable commitments in a novel, interactive way and is not an official product of the Conscious Leadership Group.
 
 ## Development Journey & AI Collaboration
 
@@ -39,7 +39,7 @@ A significant portion of the codebase, from boilerplate to complex logic, has be
 *   Assistance in debugging and refactoring code.
 *   Exploring different approaches to architectural challenges.
 
-Working with Copilot's agent capabilities has demonstrated how AI can be a powerful collaborator in the software development lifecycle, accelerating development and augmenting developer creativity. `[TODO: Optionally add a specific example or two of how the agent feature was particularly helpful if you have one ready later, e.g., "The agent was particularly useful in scaffolding the initial API endpoints..." or "Helped structure the interaction flow between user input and AI principle selection."]`
+Working with Copilot's agent capabilities has demonstrated how AI can be a powerful collaborator in the software development lifecycle, accelerating development and augmenting developer creativity. `[TODO: Optionally add a specific example or two of how the agent feature was particularly helpful if you have one ready later, e.g., "The agent was particularly useful in scaffolding the initial API endpoints..." or "Helped structure the interaction flow between user input and AI commitment selection."]`
 
 ### Showcasing GitHub Models & AI in Development
 
