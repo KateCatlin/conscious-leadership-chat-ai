@@ -187,6 +187,11 @@ h1 {
     border-color: #e0f2f1 transparent transparent transparent;
 }
 
+/* Hidden class to hide elements */
+.hidden {
+    display: none;
+}
+
 /* Footer */
 footer {
     text-align: center;

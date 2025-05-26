@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show response area and typing animation
         responseArea.classList.remove("hidden");
         loadingPlaceholder.classList.add("visible"); // Show animated dots
-        responseMessage.classList.add("hidden");
+        responseMessage.classList.add("hidden"); // Hide response bubble
         responseMessage.textContent = ""; // Clear previous response
         sendBtn.disabled = true;
 
@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Hide typing animation and show response
             loadingPlaceholder.classList.remove("visible"); // Hide animated dots
-            responseMessage.classList.remove("hidden");
+            responseMessage.classList.remove("hidden"); // Show response bubble
             responseMessage.textContent = data.response.replace(/principles/gi, "commitments");
         } catch (err) {
             loadingPlaceholder.classList.remove("visible"); // Hide animated dots
-            responseMessage.classList.remove("hidden");
+            responseMessage.classList.remove("hidden"); // Show response bubble
             responseMessage.textContent = 'Error: Could not reach the server.';
         } finally {
             sendBtn.disabled = false;
