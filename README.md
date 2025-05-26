@@ -99,6 +99,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Links
 
-- Prompts: Click the "Models" tab on this repo
-- Commitments Info: conscious.is/15-commitments
-- Improve This App: [GitHub Repo](https://github.com/KateCatlin/conscious-leadership-chat-ai)
+- [Prompts](https://github.com/KateCatlin/conscious-leadership-chat-ai): Click the "Models" tab to view/edit system and user prompts.
+- [Commitments Info](https://conscious.is/15-commitments): Learn about the 15 Commitments of Conscious Leadership.
+- [GitHub Repo](https://github.com/KateCatlin/conscious-leadership-chat-ai): Improve this app or explore the codebase.
