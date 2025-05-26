@@ -3,13 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const userInput = document.getElementById('user-input');
     const responseArea = document.getElementById('response-area');
     const sendBtn = document.getElementById('send-btn');
+    const loadingPlaceholder = document.getElementById('loading-placeholder');
+    const responseMessage = document.getElementById('response-message');
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         const message = userInput.value.trim();
         if (!message) return;
+
+        // Show response area and typing animation
+        responseArea.classList.remove("hidden");
+        loadingPlaceholder.classList.remove("hidden");
+        responseMessage.classList.add("hidden");
+        responseMessage.textContent = ""; // Clear previous response
         sendBtn.disabled = true;
-        responseArea.textContent = 'Thinking...';
+
         try {
             const res = await fetch('/chat', {
                 method: 'POST',
@@ -17,9 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ message })
             });
             const data = await res.json();
-            responseArea.textContent = data.response;
+
+            // Hide typing animation and show response
+            loadingPlaceholder.classList.add("hidden");
+            responseMessage.classList.remove("hidden");
+            responseMessage.textContent = data.response.replace(/principles/gi, "commitments");
         } catch (err) {
-            responseArea.textContent = 'Error: Could not reach the server.';
+            loadingPlaceholder.classList.add("hidden");
+            responseMessage.classList.remove("hidden");
+            responseMessage.textContent = 'Error: Could not reach the server.';
         } finally {
             sendBtn.disabled = false;
         }

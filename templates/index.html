@@ -8,12 +8,24 @@
 <body>
     <div class="container">
         <h1>Conscious Leadership Chat AI</h1>
+        <h2 class="subtitle">Reflect. Reset. Lead consciously.</h2>
+        <p class="intro-text">
+            Share something about your day. We'll reflect it back through the lens of the 15 commitments of Conscious Leadership, offering the most relevant commitment and support to help you move forward mindfully.
+        </p>
         <form id="chat-form" autocomplete="off">
             <textarea id="user-input" rows="4" placeholder="How was your day? Share your thoughts..."></textarea>
-            <button type="submit" id="send-btn">Send</button>
+            <button type="submit" id="send-btn" aria-label="Send your message">Send</button>
         </form>
-        <div id="response-area"></div>
+        <div id="response-area" class="hidden">
+            <div id="loading-placeholder" class="hidden">...</div>
+            <div id="response-message" class="hidden"></div>
+        </div>
     </div>
+    <footer>
+        🌱 <a href="https://docs.github.com/en/github-models/about-github-models" target="_blank">GitHub Models</a> · 
+        💬 <a href="https://conscious.is/15-commitments" target="_blank">Conscious Leadership 15 Commitments</a> · 
+        🛠 <a href="https://github.com/KateCatlin/conscious-leadership-chat-ai" target="_blank">Improve this app</a>
+    </footer>
     <script src="/static/script.js"></script>
 </body>
 </html>
