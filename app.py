@@ -1,4 +1,5 @@
 import os
+import yaml
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 from azure.ai.inference import ChatCompletionsClient
@@ -9,27 +10,31 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# 15 Conscious Leadership Commitments
-CONSCIOUS_LEADERSHIP_COMMITMENTS = [
-    "1. Taking radical responsibility.",
-    "2. Learning through curiosity.",
-    "3. Feeling all feelings.",
-    "4. Speaking candidly.",
-    "5. Eliminating gossip.",
-    "6. Practicing integrity.",
-    "7. Generating appreciation.",
-    "8. Exercising your genius.",
-    "9. Living a life of play and rest.",
-    "10. Creating win-for-all solutions.",
-    "11. Being the resolution.",
-    "12. Seeing abundance.",
-    "13. Sourcing approval, control, and security from within.",
-    "14. Experiencing the world as an ally.",
-    "15. Creating a life of 'enough.'"
-]
-
 GITHUB_MODELS_ENDPOINT = "https://models.github.ai/inference"
-GITHUB_MODELS_MODEL = "openai/gpt-4.1"
+
+def load_prompt_config():
+    """Load the entire prompt configuration from the YAML file"""
+    try:
+        with open('conscious-leadership-assistant.prompt.yml', 'r', encoding='utf-8') as file:
+            return yaml.safe_load(file)
+    except FileNotFoundError:
+        print("Warning: conscious-leadership-assistant.prompt.yml not found")
+        return None
+    except yaml.YAMLError as e:
+        print(f"Error parsing YAML file: {e}")
+        return None
+
+def get_system_prompt_content(prompt_config):
+    """Extract the system message content from the prompt config"""
+    if not prompt_config or 'messages' not in prompt_config:
+        return None
+    
+    # Find the system message in the messages array
+    for message in prompt_config['messages']:
+        if message.get('role') == 'system':
+            return message.get('content', '')
+    
+    return None
 
 @app.route("/")
 def index():
@@ -46,28 +51,43 @@ def chat():
     if not github_token:
         return jsonify({"response": "Server error: GITHUB_TOKEN not set."}), 500
 
-    commitments_string = "\n".join(CONSCIOUS_LEADERSHIP_COMMITMENTS)
-    system_prompt_content = f"""You are an insightful and supportive AI assistant. Your goal is to help users reflect on their day using the 15 Conscious Leadership Commitments.\nHere are the 15 Conscious Leadership Commitments:\n{commitments_string}\n\nWhen the user shares something about their day:\n1.  Analyze their message carefully.\n2.  From the list above, choose the SINGLE most relevant Conscious Leadership Commitment that could offer them a helpful perspective or insight related to what they've shared.\n3.  Craft a concise (2-4 sentences), supportive, and empathetic response to the user.\n4.  In your response, naturally weave in the name or essence of the commitment you selected, and briefly explain how it might apply to their situation. Do not explicitly state 'I have chosen commitment X'. Simply use it.\n"""
+    # Load prompt configuration from YAML file
+    prompt_config = load_prompt_config()
+    if not prompt_config:
+        return jsonify({"response": "Server error: Unable to load prompt configuration."}), 500
+
+    # Extract system prompt content
+    system_prompt_content = get_system_prompt_content(prompt_config)
+    if not system_prompt_content:
+        return jsonify({"response": "Server error: Unable to find system prompt."}), 500
+
+    # Get model and parameters from YAML (with fallbacks)
+    model = prompt_config.get('model', 'openai/gpt-4.1')
+    model_params = prompt_config.get('modelParameters', {})
+    temperature = model_params.get('temperature', 0.7)
+    top_p = model_params.get('top_p', 0.95)
+
     messages_for_api = [
         SystemMessage(content=system_prompt_content),
         UserMessage(content=user_message)
     ]
+
     try:
         client = ChatCompletionsClient(
             endpoint=GITHUB_MODELS_ENDPOINT,
             credential=AzureKeyCredential(github_token)
         )
         response = client.complete(
-            model=GITHUB_MODELS_MODEL,
+            model=model,
             messages=messages_for_api,
-            temperature=0.7,
-            top_p=0.95
+            temperature=temperature,
+            top_p=top_p
         )
         ai_response = response.choices[0].message.content.strip()
         return jsonify({"response": ai_response})
     except Exception as e:
+        print(f"Error during API call: {e}")
         return jsonify({"response": "Sorry, there was an error processing your request."}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
-
