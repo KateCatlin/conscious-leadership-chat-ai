@@ -1,110 +1,91 @@
 # conscious-leadership-chat-ai
 
-> An AI-powered chat application that responds to users' daily updates with reminders and reflections rooted in the 15 Conscious Leadership Commitments. This project showcases the integration of AI for personal development and the power of modern coding assistants like GitHub Copilot's agent features.
+> A simple, personal AI chatbot that brings the 15 Commitments of Conscious Leadership to life,  powered entirely by **GitHub Models** and your own GitHub token. 🎉
 
-## About The Project
+## ✨ What This Is
 
-This application provides a space for users to articulate their daily experiences, thoughts, and challenges. In response, an AI assistant offers supportive reflections and introduces one of the [15 Conscious Leadership Commitments](https://conscious.is/15-commitments) to encourage mindfulness, self-awareness, and intentional leadership in everyday life.
+This is a minimal, expressive demo app showing how you can spin up an AI-powered chat experience using nothing more than:
 
-The goal is to create a simple yet profound tool that helps individuals connect their daily activities with powerful commitments for conscious living and working.
+- Your own **GitHub account + Personal Access Token**
+- GitHub’s **free Models API** (currently in preview)
+- **Copilot** to write all your code
 
-## Key Features
+You write your prompts, manage them in the GitHub UI, and GitHub handles the inference pipeline. No OpenAI billing, no complex setup.
 
-*   **Daily Reflection Input:** Users can easily share what's on their mind.
-*   **AI-Powered Responses:** Get empathetic and relevant feedback.
-*   **Conscious Leadership Commitment Integration:** Each AI response will subtly weave in one of the 15 commitments as a point of reflection.
-*   **Focus on Growth:** Aims to foster self-awareness and personal development.
-*   `[TODO: Add more features as they are developed, e.g., history, commitment tracking]`
+## 💡 What It Does
 
-## Core Inspiration: The 15 Commitments of Conscious Leadership
+Users write something about their day, and the app responds with a thoughtful, supportive message grounded in one of the [15 Commitments of Conscious Leadership](https://conscious.is/15-commitments). Think of it as a self-coaching moment, elevated by AI.
 
-This project is deeply inspired by the work of the Conscious Leadership Group and their "15 Commitments of Conscious Leadership." These commitments offer a transformative framework for personal and professional growth.
+It’s great for moments of reflection, but also serves as a **starter kit** to show just how easy GitHub has made it to run personalized LLM applications.
 
-**Full credit for these commitments goes to the Conscious Leadership Group.** We encourage everyone to explore their work further:
-*   **Website:** [conscious.is](https://conscious.is/)
-*   **The 15 Commitments:** [conscious.is/15-commitments](https://conscious.is/15-commitments)
+## 🔧 Why I Made This
 
-This application is an attempt to bring awareness to these valuable commitments in a novel, interactive way and is not an official product of the Conscious Leadership Group.
+I’ve done code bootcamps in Java and Ruby, but I have no prior experience with Python. I wanted to see:
 
-## Development Journey & AI Collaboration
+- What can I build with AI using **GitHub Models**?
+- How fast can I get it running with **just Copilot**?
+- Can I host something useful that people might actually use?
 
-This project leverages cutting-edge AI not only in its core functionality (the chat AI) but also in its development process.
+The answer to all of the above: **yes**. This app came together through Copilot-generated scaffolding, edits, and chat assistance — and GitHub Models is doing all the AI inference in real time behind the scenes.
 
-### GitHub Copilot & its Agent Feature
+## 🔍 Try It & Explore the Prompts
 
-A significant portion of the codebase, from boilerplate to complex logic, has been developed with the assistance of **GitHub Copilot**, particularly utilizing its **new agent features**. This allowed for:
+If you're curious about how the prompts actually work, GitHub has made it incredibly easy to see and edit them:
 
-*   Rapid prototyping and iteration.
-*   Efficient generation of functions and classes based on natural language descriptions.
-*   Assistance in debugging and refactoring code.
-*   Exploring different approaches to architectural challenges.
+1. Go to the GitHub repo
+2. Click the new **"Models"** tab
+3. Choose the system or user prompt to view/edit in the UI
 
-Working with Copilot's agent capabilities has demonstrated how AI can be a powerful collaborator in the software development lifecycle, accelerating development and augmenting developer creativity. `[TODO: Optionally add a specific example or two of how the agent feature was particularly helpful if you have one ready later, e.g., "The agent was particularly useful in scaffolding the initial API endpoints..." or "Helped structure the interaction flow between user input and AI commitment selection."]`
+This makes collaborating on prompt design **way easier** — especially if you want to fine-tune tone, behavior, or structure as a team.
 
-### Showcasing GitHub Models & AI in Development
+I'll be making a video soon walking through how I'm using the Models tab to improve and manage my prompts using GitHub's new **prompt tooling and evaluations features**.
 
-This repository also serves as an example of the capabilities emerging from advancements in AI, including those explored and integrated within the GitHub ecosystem ("GitHub Models" as a concept of AI enhancing the developer platform). By using AI to build an AI-powered application, we aim to showcase:
+## ✨ Features
 
-*   The potential for AI to understand and implement complex requirements.
-*   How AI tools can streamline the creation of sophisticated applications.
-*   The evolving landscape of software development where AI assistants play an integral role.
+- 🧘‍♀️ **Conscious Leadership Coaching:** Grounded in the 15 commitments
+- ✍️ **Daily Reflection Input:** Just type how you're feeling today
+- 🤖 **GitHub Models Integration:** Handles AI response generation
 
-`[TODO: As GitHub releases more specific "GitHub Models" features or capabilities that you directly use or are inspired by, you can update this section to be more concrete.]`
+## 🛠 Tech Stack
 
-## Technology Stack
+- **Frontend:** HTML, CSS, Vanilla JS
+- **Backend:** Python Flask
+- **AI Engine:** GitHub Models (no third-party API key required!)
+- **Other Tools:** Dotenv, GitHub Copilot for development
 
-*   **Primary Language:** `[TODO: e.g., Python, JavaScript, etc.]`
-*   **AI/ML Model:** `[TODO: e.g., OpenAI API (GPT-3.5/4), a specific Hugging Face model, etc.]`
-*   **Frameworks/Libraries:** `[TODO: e.g., Flask, React, Node.js, LangChain, etc.]`
-*   **Database:** `[TODO: e.g., SQLite, PostgreSQL, None, etc.]`
-*   **Development Tools:** GitHub Copilot
+## ⚙️ Setup
 
-## Getting Started
+```bash
+# 1. Clone the repo
+git clone https://github.com/KateCatlin/conscious-leadership-chat-ai.git
 
-`[TODO: Provide instructions on how to get a local copy up and running.]`
+# 2. Navigate to it
+cd conscious-leadership-chat-ai
 
-### Prerequisites
+# 3. Create a virtual environment
+python -m venv venv && source venv/bin/activate
 
-`[TODO: List any software, APIs, or services needed before installation, e.g., Python 3.x, Node.js, API keys]`
-*   Example: `npm install npm@latest -g`
+# 4. Install Python dependencies
+pip install -r requirements.txt
 
-### Installation
+# 5. Add your GitHub token to a .env file
+echo "GITHUB_TOKEN=your_personal_token_here" > .env
 
-1.  Clone the repo
-    ```sh
-    git clone https://github.com/your_username/conscious-leadership-chat-ai.git
-    ```
-2.  Navigate to the project directory
-    ```sh
-    cd conscious-leadership-chat-ai
-    ```
-3.  Install dependencies
-    ```sh
-    # TODO: Add specific commands, e.g.,
-    # pip install -r requirements.txt
-    # npm install
-    ```
-4.  Set up environment variables
-    `[TODO: Explain how to set up any necessary .env files or environment variables, e.g., API_KEY='YOUR_API_KEY']`
+# 6. Start the app
+python app.py
+```
 
-## Usage
+Then open `http://localhost:5000` in your browser and start chatting with the AI.
 
-`[TODO: Explain how to run the application and interact with it. Provide examples if possible.]`
-*   Example: `python app.py`
-*   Then navigate to `http://localhost:5000` in your browser.
+## 🙋‍♀️ Want to Contribute?
 
-## Contributing
+Yes please! If you're interested in exploring GitHub Models with your own prompts, or improving this chat UI, here’s how to dive in:
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+1. Fork the repo
+2. Open the Models tab to tweak the system/user prompts
+3. Submit a PR or open an issue with ideas
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+This is a very open and early project. Contributions, UI feedback, or prompt experiments are welcome.
 
 ## License
 
@@ -113,10 +94,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Acknowledgements
 
 *   **Conscious Leadership Group:** For their foundational work on the 15 Commitments of Conscious Leadership.
-*   **GitHub Copilot Team:** For creating an indispensable AI pair programmer.
+*   **GitHub Models:** — For the API powering the AI in this project.
+*   **GitHub Copilot:** — For writing almost all of this code for me. 😄
 
-## Contact
+## Links
 
-`[@KateCatlin]` - `https://github.com/KateCatlin`
-
-Project Link: [https://github.com/katecatlin/conscious-leadership-chat-ai](https://github.com/katecatlin/conscious-leadership-chat-ai)
+- [Prompts](https://github.com/KateCatlin/conscious-leadership-chat-ai): Click the "Models" tab to view/edit system and user prompts.
+- [Commitments Info](https://conscious.is/15-commitments): Learn about the 15 Commitments of Conscious Leadership.
+- [GitHub Repo](https://github.com/KateCatlin/conscious-leadership-chat-ai): Improve this app or explore the codebase.
