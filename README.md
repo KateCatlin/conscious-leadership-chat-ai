@@ -94,11 +94,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Acknowledgements
 
 *   **Conscious Leadership Group:** For their foundational work on the 15 Commitments of Conscious Leadership.
-*   **GitHub Models:** — For the API powering the AI in this project.
-*   **GitHub Copilot:** — For writing almost all of this code for me. 😄
+*   **GitHub Models:** For the API powering the AI in this project.
+*   **GitHub Copilot:** For writing almost all of this code for me. 😄
 
 ## Links
 
-- [Prompts](https://github.com/KateCatlin/conscious-leadership-chat-ai): Click the "Models" tab to view/edit system and user prompts.
+- [Prompts](https://github.com/KateCatlin/conscious-leadership-chat-ai/models/prompts): Click the "Models" tab to view/edit system and user prompts.
 - [Commitments Info](https://conscious.is/15-commitments): Learn about the 15 Commitments of Conscious Leadership.
 - [GitHub Repo](https://github.com/KateCatlin/conscious-leadership-chat-ai): Improve this app or explore the codebase.
