@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Show response area and typing animation
         responseArea.classList.remove("hidden");
-        loadingPlaceholder.classList.remove("hidden");
+        loadingPlaceholder.classList.add("visible"); // Show animated dots
         responseMessage.classList.add("hidden");
         responseMessage.textContent = ""; // Clear previous response
         sendBtn.disabled = true;
@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await res.json();
 
             // Hide typing animation and show response
-            loadingPlaceholder.classList.add("hidden");
+            loadingPlaceholder.classList.remove("visible"); // Hide animated dots
             responseMessage.classList.remove("hidden");
             responseMessage.textContent = data.response.replace(/principles/gi, "commitments");
         } catch (err) {
-            loadingPlaceholder.classList.add("hidden");
+            loadingPlaceholder.classList.remove("visible"); // Hide animated dots
             responseMessage.classList.remove("hidden");
             responseMessage.textContent = 'Error: Could not reach the server.';
         } finally {

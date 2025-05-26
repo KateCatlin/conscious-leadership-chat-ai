@@ -10,16 +10,17 @@ body {
     color: #333333;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100vh;
+    min-height: 100vh;
 }
 
 /* Main Content Container */
 .container {
     flex: 1;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 40px auto;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     padding: 30px 40px;
@@ -116,50 +117,48 @@ h1 {
 
 /* AI Response Area */
 #response-area {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #e0f2f1;
-    border-radius: 8px;
-    color: #004d40;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    min-height: 50px;
-    border: 1px solid #b2dfdb;
+    margin-top: 20px; /* Subtle spacing between input and response */
+    padding: 0; /* Remove padding */
+    background-color: transparent; /* Remove background color */
+    border: none; /* Remove border */
 }
 
-#response-area.hidden {
-    display: none;
+/* Typing indicator with pulsing dots */
+#loading-placeholder {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+    justify-content: center;
+    gap: 6px;
 }
 
-/* Response Fade-in Animation */
-#response-area .visible {
-    opacity: 1;
-    transition: opacity 0.5s ease-in;
+#loading-placeholder.visible {
+    display: flex; /* Show only when .visible is added */
 }
 
-#response-area .hidden {
-    opacity: 0;
+#loading-placeholder span {
+    width: 8px;
+    height: 8px;
+    background-color: #4DB6AC;
+    border-radius: 50%;
+    animation: pulse 1.2s infinite ease-in-out;
 }
 
-/* Typing animation */
-#loading-placeholder::after {
-    content: " ";
-    display: inline-block;
-    animation: dots 1.5s steps(3, end) infinite;
+#loading-placeholder span:nth-child(2) {
+    animation-delay: 0.2s;
 }
 
-@keyframes dots {
-    0% {
-        content: ".";
+#loading-placeholder span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.6;
     }
-    33% {
-        content: "..";
-    }
-    66% {
-        content: "...";
-    }
-    100% {
-        content: ".";
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
     }
 }
 
@@ -170,7 +169,7 @@ h1 {
     padding: 15px 20px;
     border-radius: 15px;
     position: relative;
-    margin-top: 20px;
+    margin-top: 10px;
     line-height: 1.6;
     font-size: 0.95rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -193,34 +192,7 @@ footer {
     text-align: center;
     font-size: 0.85rem;
     color: #777;
-    margin-top: 20px;
     padding: 25px 10px 10px;
     width: 100%;
-    position: relative;
-}
-
-/* Light top divider above the footer */
-footer::before {
-    content: "";
-    display: block;
-    height: 1px;
-    background-color: #e0e0e0;
-    width: 80%;
-    margin: 0 auto 20px;
-    opacity: 0.5;
-}
-
-/* Footer links */
-footer a {
-    color: #4DB6AC;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-    font-weight: 500;
-}
-
-/* Hover effect for footer links */
-footer a:hover {
-    color: #3A9D91;
-    text-decoration: underline;
+    background-color: #f4f7f6;
 }
