@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; background: #f7f7f7; }
+.container { max-width: 600px; margin: 40px auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+h1 { text-align: center; }
+#chat-form { display: flex; flex-direction: column; gap: 1em; }
+#user-input { width: 100%; resize: vertical; padding: 0.5em; font-size: 1em; }
+#send-btn { align-self: flex-end; padding: 0.5em 1.5em; font-size: 1em; background: #2d7ff9; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+#send-btn:disabled { background: #b3cdfa; cursor: not-allowed; }
+#response-area { margin-top: 2em; padding: 1em; background: #f0f4fa; border-radius: 4px; min-height: 2em; }
