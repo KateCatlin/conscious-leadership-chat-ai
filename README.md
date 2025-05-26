@@ -94,8 +94,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Acknowledgements
 
 *   **Conscious Leadership Group:** For their foundational work on the 15 Commitments of Conscious Leadership.
-*   **GitHub Models:** — For the API powering the AI in this project. 
-*   **GitHub Copilot:** — For writing almost all of this code for me 😄
+*   **GitHub Models:** — For the API powering the AI in this project.
+*   **GitHub Copilot:** — For writing almost all of this code for me. 😄
 
 ## Links
 
